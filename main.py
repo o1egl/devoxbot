@@ -2,6 +2,7 @@ import requests
 import telepot
 import time
 import os
+from datetime import datetime
 
 url = 'https://reg.devoxx.be/api/v2/public/event/2024/ticket-categories'
 
@@ -23,9 +24,9 @@ def check_tickets():
                 if maximum_saleable_tickets > 0:
                     message = f"Category ID {target_category_id} has {maximum_saleable_tickets} tickets available!"
                     bot.sendMessage(chat_id, message)
-                    print("Notification sent to Telegram")
+                    print(f"{datetime.now()} - Notification sent to Telegram")
                 else:
-                    print("No tickets available for category ID 46")
+                    print(f"{datetime.now()} - No tickets available for category ID 46")
                 break
     except Exception as e:
         print(f"Error occurred: {e}")
