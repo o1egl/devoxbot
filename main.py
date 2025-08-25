@@ -4,7 +4,7 @@ import time
 import os
 from datetime import datetime
 
-url = 'https://reg.devoxx.be/api/v2/public/event/2024/ticket-categories'
+url = 'https://reg.devoxx.be/api/v2/public/event/dvbe25/ticket-categories'
 
 bot = telepot.Bot(os.getenv("TOKEN"))
 chat_id = os.getenv("CHAT_ID")
