@@ -26,7 +26,7 @@ def check_tickets():
                     bot.sendMessage(chat_id, message)
                     print(f"{datetime.now()} - Notification sent to Telegram")
                 else:
-                    print(f"{datetime.now()} - No tickets available for category ID 46")
+                    print(f"{datetime.now()} - No tickets available for category ID {target_category_id}")
                 break
     except Exception as e:
         print(f"Error occurred: {e}")
