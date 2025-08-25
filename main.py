@@ -16,7 +16,7 @@ def check_tickets():
 
         ticket_categories = response.get("ticketCategories", [])
 
-        target_category_id = 46
+        target_category_id = 62
 
         for category in ticket_categories:
             if category.get("id") == target_category_id:
