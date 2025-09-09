@@ -12,6 +12,8 @@ COPY main.py main.py
 ENV PYTHONUNBUFFERED=1
 ENV TOKEN=""
 ENV CHAT_ID=""
+ENV URL="https://reg.devoxx.be/api/v2/public/event/dvbe25/ticket-categories"
+ENV TARGET_CATEGORY_ID="63"
 
 # Run the Python script when the container launches
 CMD ["python", "./main.py"]

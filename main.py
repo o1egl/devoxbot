@@ -4,19 +4,34 @@ import time
 import os
 from datetime import datetime
 
-url = 'https://reg.devoxx.be/api/v2/public/event/dvbe25/ticket-categories'
+url = os.getenv("URL")
+if not url:
+    raise ValueError("URL environment variable is required")
 
-bot = telepot.Bot(os.getenv("TOKEN"))
+token = os.getenv("TOKEN")
+if not token:
+    raise ValueError("TOKEN environment variable is required")
+
 chat_id = os.getenv("CHAT_ID")
+if not chat_id:
+    raise ValueError("CHAT_ID environment variable is required")
 
+target_category_id_str = os.getenv("TARGET_CATEGORY_ID")
+if not target_category_id_str:
+    raise ValueError("TARGET_CATEGORY_ID environment variable is required")
+try:
+    target_category_id = int(target_category_id_str)
+except ValueError:
+    raise ValueError(f"Invalid TARGET_CATEGORY_ID: {target_category_id_str}")
+
+
+bot = telepot.Bot(token)
 
 def check_tickets():
     try:
         response = requests.get(url).json()
 
         ticket_categories = response.get("ticketCategories", [])
-
-        target_category_id = 62
 
         for category in ticket_categories:
             if category.get("id") == target_category_id:
